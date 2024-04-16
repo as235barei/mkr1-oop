@@ -2,46 +2,46 @@
 #include <vector>
 #include <iostream>
 
-// Структура для представлення вантажу
+// РЎС‚СЂСѓРєС‚СѓСЂР° РґР»СЏ РїСЂРµРґСЃС‚Р°РІР»РµРЅРЅСЏ РІР°РЅС‚Р°Р¶Сѓ
 struct Cargo {
-  std::string name; // Назва вантажу
-  float weight; // Вага вантажу
-  float volume; // Об'єм вантажу
+  std::string name; // РќР°Р·РІР° РІР°РЅС‚Р°Р¶Сѓ
+  float weight; // Р’Р°РіР° РІР°РЅС‚Р°Р¶Сѓ
+  float volume; // РћР±'С”Рј РІР°РЅС‚Р°Р¶Сѓ
 
   Cargo(std::string n, float w, float v) : name(n), weight(w), volume(v) {}
 };
 
-// Структура для представлення координат
+// РЎС‚СЂСѓРєС‚СѓСЂР° РґР»СЏ РїСЂРµРґСЃС‚Р°РІР»РµРЅРЅСЏ РєРѕРѕСЂРґРёРЅР°С‚
 struct Coordinate {
-  double latitude; // Широта
-  double longitude; // Довгота
+  double latitude; // РЁРёСЂРѕС‚Р°
+  double longitude; // РЁРёСЂРѕС‚Р°
 
   Coordinate(double lat, double lon) : latitude(lat), longitude(lon) {}
 };
 
-// Клас "Дирижабль"
+// РљР»Р°СЃ "Р”РёСЂРёР¶Р°Р±Р»СЊ"
 class Dirigible {
 private:
-  std::string name; // Назва дирижабля
-  float length; // Довжина дирижабля
-  float maxAltitude; // Максимальна висота польоту
-  int capacity; // Вантажопідйомність
-  std::vector<Cargo> cargo; // Список вантажу на борту
-  Coordinate* route; // Маршрут польоту дирижабля
-  static float recommendedMaxAltitude; // Рекомендована максимальна висота польоту
-  static float climbRate; // Швидкість набору висоти дирижабля
-  static int recommendedPassengerCapacity; // Рекомендована місткість пасажирів
-  static float recommendedCargoWeight; // Рекомендована загальна вага вантажу
+  std::string name; // РљР»Р°СЃ "Р”РёСЂРёР¶Р°Р±Р»СЊ"
+  float length; // РљР»Р°СЃ "Р”РёСЂРёР¶Р°Р±Р»СЊ"
+  float maxAltitude; // РњР°РєСЃРёРјР°Р»СЊРЅР° РІРёСЃРѕС‚Р° РїРѕР»СЊРѕС‚Сѓ
+  int capacity; // Р’Р°РЅС‚Р°Р¶РѕРїС–РґР№РѕРјРЅС–СЃС‚СЊ
+  std::vector<Cargo> cargo; // РЎРїРёСЃРѕРє РІР°РЅС‚Р°Р¶Сѓ РЅР° Р±РѕСЂС‚Сѓ
+  Coordinate* route; // РњР°СЂС€СЂСѓС‚ РїРѕР»СЊРѕС‚Сѓ РґРёСЂРёР¶Р°Р±Р»СЏ
+  static float recommendedMaxAltitude; // Р РµРєРѕРјРµРЅРґРѕРІР°РЅР° РјР°РєСЃРёРјР°Р»СЊРЅР° РІРёСЃРѕС‚Р° РїРѕР»СЊРѕС‚Сѓ
+  static float climbRate; // РЁРІРёРґРєС–СЃС‚СЊ РЅР°Р±РѕСЂСѓ РІРёСЃРѕС‚Рё РґРёСЂРёР¶Р°Р±Р»СЏ
+  static int recommendedPassengerCapacity;// Р РµРєРѕРјРµРЅРґРѕРІР°РЅР° РјС–СЃС‚РєС–СЃС‚СЊ РїР°СЃР°Р¶РёСЂС–РІ
+  static float recommendedCargoWeight; // Р РµРєРѕРјРµРЅРґРѕРІР°РЅР° Р·Р°РіР°Р»СЊРЅР° РІР°РіР° РІР°РЅС‚Р°Р¶Сѓ
 
 public:
-  // Конструктори
+  // Р РµРєРѕРјРµРЅРґРѕРІР°РЅР° Р·Р°РіР°Р»СЊРЅР° РІР°РіР° РІР°РЅС‚Р°Р¶Сѓ
   Dirigible() : name("NoName"), length(0.0), maxAltitude(0.0), capacity(0), route(nullptr) {}
 
   Dirigible(std::string n, float l, float maxA, int cap) : name(n), length(l), maxAltitude(maxA), capacity(cap), route(nullptr) {
 
   }
 
-  // Конструктор копіювання
+  // РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РєРѕРїС–СЋРІР°РЅРЅСЏ
   Dirigible(const Dirigible& other) {
     name = other.name;
     length = other.length;
@@ -54,13 +54,13 @@ public:
       route = nullptr;
   }
 
-  // Деструктор
+  // Р”РµСЃС‚СЂСѓРєС‚РѕСЂ
   ~Dirigible() {
     delete route;
 		cargo.clear();
   }
 
-  // Методи для роботи з атрибутами
+  // РњРµС‚РѕРґРё РґР»СЏ СЂРѕР±РѕС‚Рё Р· Р°С‚СЂРёР±СѓС‚Р°РјРё
   void setName(std::string n) {
     name = n;
   }
@@ -77,18 +77,18 @@ public:
     capacity = cap;
   }
 
-  // Додавання вантажу
+  // Р”РѕРґР°РІР°РЅРЅСЏ РІР°РЅС‚Р°Р¶Сѓ
   void addCargo(const Cargo& newCargo) {
     cargo.push_back(newCargo);
   }
 
   void setRoute(double latitude, double longitude) {
-    // Видалення попереднього маршруту, якщо він існує
+    // Р’РёРґР°Р»РµРЅРЅСЏ РїРѕРїРµСЂРµРґРЅСЊРѕРіРѕ РјР°СЂС€СЂСѓС‚Сѓ, СЏРєС‰Рѕ РІС–РЅ С–СЃРЅСѓС”
     if (route != nullptr) {
       delete route;
     }
 
-    // Створення нового маршруту
+    // РЎС‚РІРѕСЂРµРЅРЅСЏ РЅРѕРІРѕРіРѕ РјР°СЂС€СЂСѓС‚Сѓ
     route = new Coordinate(latitude, longitude);
   }
 
@@ -110,29 +110,29 @@ public:
   }
 };
 
-// Ініціалізація статичних змінних
+// Р†РЅС–С†С–Р°Р»С–Р·Р°С†С–СЏ СЃС‚Р°С‚РёС‡РЅРёС… Р·РјС–РЅРЅРёС…
 float Dirigible::recommendedMaxAltitude = 3000.0;
 float Dirigible::climbRate = 5.0;
 int Dirigible::recommendedPassengerCapacity = 50;
 float Dirigible::recommendedCargoWeight = 2000.0;
 
 int main() {
-  // Приклад використання класу Dirigible
-  Dirigible airship("Airship1", 50.5, 5000.0, 1000); // Створення об'єкту дирижабля
-  airship.setName("NewAirship"); // Встановлення назви
-  airship.setLength(70.0); // Встановлення довжини
-  airship.setMaxAltitude(6000.0); // Встановлення максимальної висоти польоту
-  airship.setCapacity(1200); // Встановлення вантажопідйомності
+  // РџСЂРёРєР»Р°Рґ РІРёРєРѕСЂРёСЃС‚Р°РЅРЅСЏ РєР»Р°СЃСѓ Dirigible
+  Dirigible airship("Airship1", 50.5, 5000.0, 1000); // РЎС‚РІРѕСЂРµРЅРЅСЏ РѕР±'С”РєС‚Сѓ РґРёСЂРёР¶Р°Р±Р»СЏ
+  airship.setName("NewAirship"); // Р’СЃС‚Р°РЅРѕРІР»РµРЅРЅСЏ РЅР°Р·РІРё
+  airship.setLength(70.0); // Р’СЃС‚Р°РЅРѕРІР»РµРЅРЅСЏ РґРѕРІР¶РёРЅРё
+  airship.setMaxAltitude(6000.0); // Р’СЃС‚Р°РЅРѕРІР»РµРЅРЅСЏ РјР°РєСЃРёРјР°Р»СЊРЅРѕС— РІРёСЃРѕС‚Рё РїРѕР»СЊРѕС‚Сѓ
+  airship.setCapacity(1200); // Р’СЃС‚Р°РЅРѕРІР»РµРЅРЅСЏ РІР°РЅС‚Р°Р¶РѕРїС–РґР№РѕРјРЅРѕСЃС‚С–
 
-  // Додавання вантажу
+  // Р’СЃС‚Р°РЅРѕРІР»РµРЅРЅСЏ РјР°СЂС€СЂСѓС‚Сѓ
   Cargo cargo1("Books", 200.0, 10.0);
   Cargo cargo2("Clothes", 150.0, 15.0);
   airship.addCargo(cargo1);
   airship.addCargo(cargo2);
 
-  // Встановлення маршруту
-  airship.setRoute(40.7128, -74.0060); // Нью-Йорк
-  airship.setRoute(50.4020, 30.5326); // Київ
+  // Р’СЃС‚Р°РЅРѕРІР»РµРЅРЅСЏ РјР°СЂС€СЂСѓС‚Сѓ
+  airship.setRoute(40.7128, -74.0060); // РќСЊСЋ-Р™РѕСЂРє
+  airship.setRoute(50.4020, 30.5326); // РљРёС—РІ
 
   airship.printInfo();
 
