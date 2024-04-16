@@ -77,6 +77,7 @@ public:
     capacity = cap;
   }
 
+  // Додавання вантажу
   void addCargo(const Cargo& newCargo) {
     cargo.push_back(newCargo);
   }
